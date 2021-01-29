@@ -1,18 +1,35 @@
-import React from 'react';
-import { Route, NavLink, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
 
 import ItemDescription from './ItemDescription';
 import ItemShipping from './ItemShipping';
 
 function Item(props) {
-  const { push } = useHistory();
-  // same as:
-  // const history = useHistory();
-  // const push = history.push;
-  const item = props.items.find(
-    thing => `${thing.id}` === props.match.params.id
-  );
+  const [item, setItem] = useState({});
+  const { id } = props.match.params;
+
+  useEffect(()=>{
+    axios.get(`http://localhost:3333/itemById/${id}`)
+      .then(res=>{
+        setItem(res.data);
+      });
+  }, []);
+
+  const handleEditClick = () => {
+    this.history.push(`/item-update/${id}`);
+  }
+
+  const handleDeleteClick = () => {
+    axios.delete(`http://localhost:3333/items/${id}`)
+      .then(res=>{
+        this.history.props.setItems(res.data);
+        push('/item-list');
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+  }
 
   if (!props.items.length || !item) {
     return <h2>Loading item data...</h2>;
@@ -44,10 +61,10 @@ function Item(props) {
         path="/item-list/:id/shipping"
         render={props => <ItemShipping {...props} item={item} />}
       />
-      <button className="md-button">
+      <button onClick={handleEditClick} className="md-button">
         Edit
       </button>
-      <button className="md-button">
+      <button onClick={handleDeleteClick} className="md-button">
         Delete
       </button>
     </div>
