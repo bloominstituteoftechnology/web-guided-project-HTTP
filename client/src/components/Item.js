@@ -10,7 +10,7 @@ function Item(props) {
   const { id } = props.match.params;
 
   useEffect(()=>{
-    axios.get(`http://localhost:3333/itemById/${id}`)
+    axios.get(`http://localhost:3333/items/${id}`)
       .then(res=>{
         setItem(res.data);
       });

@@ -155,7 +155,7 @@ server.get("/items", (req, res) => {
 });
 let itemId = 12;
 
-server.get("/itemById/:id", (req, res) => {
+server.get("/items/:id", (req, res) => {
   const { id } = req.params;
   const findItemById = item => {
     return item.id == id;
