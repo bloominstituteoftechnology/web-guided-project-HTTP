@@ -16,21 +16,6 @@ function Item(props) {
       });
   }, []);
 
-  const handleEditClick = () => {
-    this.history.push(`/item-update/${id}`);
-  }
-
-  const handleDeleteClick = () => {
-    axios.delete(`http://localhost:3333/items/${id}`)
-      .then(res=>{
-        this.history.props.setItems(res.data);
-        push('/item-list');
-      })
-      .catch(err=>{
-        console.log(err);
-      })
-  }
-
   if (!props.items.length || !item) {
     return <h2>Loading item data...</h2>;
   }
@@ -61,10 +46,10 @@ function Item(props) {
         path="/item-list/:id/shipping"
         render={props => <ItemShipping {...props} item={item} />}
       />
-      <button onClick={handleEditClick} className="md-button">
+      <button className="md-button">
         Edit
       </button>
-      <button onClick={handleDeleteClick} className="md-button">
+      <button className="md-button">
         Delete
       </button>
     </div>

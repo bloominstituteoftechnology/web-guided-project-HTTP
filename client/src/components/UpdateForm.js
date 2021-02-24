@@ -11,9 +11,7 @@ const initialItem = {
 };
 
 const UpdateForm = props => {
-  const { push } = useHistory();
   const [item, setItem] = useState(initialItem);
-  const { id } = useParams();
 
   const changeHandler = ev => {
     ev.persist();
@@ -30,7 +28,6 @@ const UpdateForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // make a PUT request to edit the item
   };
 
   return (

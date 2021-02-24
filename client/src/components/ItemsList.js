@@ -1,15 +1,16 @@
 import React from "react";
 
 function ItemsList(props) {
-  function routeToItem(ev, item) {
+  function handleClick(ev, item) {
     ev.preventDefault();
     props.history.push(`/item-list/${item.id}`);
   }
+  
   return (
     <div className="items-list-wrapper">
       {props.items.map(item => (
         <div
-          onClick={ev => routeToItem(ev, item)}
+          onClick={ev => handleClick(ev, item)}
           className="item-card"
           key={item.id}
         >
