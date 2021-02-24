@@ -9,6 +9,7 @@ function Item(props) {
   const [item, setItem] = useState({});
   const { id } = props.match.params;
 
+  console.log();
   useEffect(()=>{
     axios.get(`http://localhost:3333/items/${id}`)
       .then(res=>{
@@ -16,7 +17,7 @@ function Item(props) {
       });
   }, []);
 
-  if (!props.items.length || !item) {
+  if (!item) {
     return <h2>Loading item data...</h2>;
   }
 
