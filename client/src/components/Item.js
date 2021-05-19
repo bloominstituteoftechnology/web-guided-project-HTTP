@@ -25,7 +25,7 @@ function Item(props) {
   }
 
   const handleDeleteClick = ()=> {
-    console.log("clicked");
+    axios.delete(`http://localhost:3333/items/${id}`)
   }
 
   //1. add in onClick handler to delete button
