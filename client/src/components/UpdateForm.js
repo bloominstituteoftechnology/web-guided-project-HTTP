@@ -11,6 +11,7 @@ const initialItem = {
 };
 
 const UpdateForm = props => {
+  console.log(props);
   const [item, setItem] = useState(initialItem);
   const id = props.match.params.id;
 
@@ -50,8 +51,6 @@ const UpdateForm = props => {
         console.log(err);
       })
   };
-
-  console.log(props);
 
   return (
     <div>
