@@ -53,7 +53,7 @@ const App = () => {
       />
 
       <Route path="/update-item/:id" render={(props)=> {
-        return(<UpdateForm/>);
+        return(<UpdateForm {...props}/>);
       }} />
 
       <Route path="/item-form" component={ItemForm} />
