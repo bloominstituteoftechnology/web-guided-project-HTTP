@@ -3,10 +3,10 @@ import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const initialItem = {
-  name: "",
-  price: "",
-  imageUrl: "",
-  description: "",
+  name: "wasdfsa",
+  price: "2342323",
+  imageUrl: "safsadfsa",
+  description: "asdfasf",
   shipping: ""
 };
 
