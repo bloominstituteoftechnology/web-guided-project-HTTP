@@ -18,7 +18,7 @@ const sendUserError = (msg, res) => {
 let items = [
   {
     name: "Reel Viewer",
-    id: 0,
+    id: "0",
     price: 29.95,
     imageUrl:
       "https://www.uncommongoods.com/images/items/47400/47435_1_360px.jpg",
@@ -29,7 +29,7 @@ let items = [
   },
   {
     name: "Mathematical Glasses - Set of 4",
-    id: 1,
+    id: "1",
     price: 38.0,
     imageUrl:
       "https://www.uncommongoods.com/images/items/46700/46720_1_360px.jpg",
@@ -40,7 +40,7 @@ let items = [
   },
   {
     name: "Shakespearean Insults Chart",
-    id: 2,
+    id: "2",
     price: 25.49,
     imageUrl:
       "https://www.uncommongoods.com/images/items/27300/27303_1_360px.jpg",
@@ -51,7 +51,7 @@ let items = [
   },
   {
     name: "Yoga Joes",
-    id: 3,
+    id: "3",
     price: 25.0,
     imageUrl:
       "https://www.uncommongoods.com/images/items/43200/43212_1_360px.jpg",
@@ -62,7 +62,7 @@ let items = [
   },
   {
     name: "Dinosaur Taco Holders",
-    id: 4,
+    id: "4",
     price: 12.0,
     imageUrl:
       "https://www.uncommongoods.com/images/items/45700/45759_1_360px.jpg",
@@ -73,7 +73,7 @@ let items = [
   },
   {
     name: "Color Changing Cinema Lightbox",
-    id: 5,
+    id: "5",
     price: 49.95,
     imageUrl:
       "https://www.uncommongoods.com/images/items/46600/46667_1_360px.jpg",
@@ -84,7 +84,7 @@ let items = [
   },
   {
     name: "Avocado Tree Starter Kit - Set of 3",
-    id: 6,
+    id: "6",
     price: 20.0,
     imageUrl:
       "https://www.uncommongoods.com/images/items/40800/40804_1_360px.jpg",
@@ -95,7 +95,7 @@ let items = [
   },
   {
     name: "Hero Bookend",
-    id: 7,
+    id: "7",
     price: 19.95,
     imageUrl:
       "https://www.uncommongoods.com/images/items/47500/47500_1_360px.jpg",
@@ -106,7 +106,7 @@ let items = [
   },
   {
     name: "Fishing Pole Campfire Roaster",
-    id: 8,
+    id: "8",
     price: 29.95,
     imageUrl:
       "https://www.uncommongoods.com/images/items/43000/43021_1_360px.jpg",
@@ -117,7 +117,7 @@ let items = [
   },
   {
     name: "Elwood the Unicorn Cereal Bowl",
-    id: 9,
+    id: "9",
     price: 39.95,
     imageUrl:
       "https://www.uncommongoods.com/images/items/25800/25893_1_360px.jpg",
@@ -128,7 +128,7 @@ let items = [
   },
   {
     name: "Spotted Wellies Garden Ducks",
-    id: 10,
+    id: "10",
     price: 19.99,
     imageUrl:
       "https://www.uncommongoods.com/images/items/26500/26530_1_360px.jpg",
@@ -139,7 +139,7 @@ let items = [
   },
   {
     name: "Eye Glasses Holder",
-    id: 11,
+    id: "11",
     price: 15.49,
     imageUrl:
       "https://www.uncommongoods.com/images/items/19000/19079_1_360px.jpg",
@@ -170,7 +170,7 @@ server.get("/items/:id", (req, res) => {
 
 server.post("/items", (req, res) => {
   const { name, price, imageUrl, description, shipping } = req.body;
-  const newItem = { name, price, imageUrl, description, shipping, id: itemId };
+  const newItem = { name, price, imageUrl, description, shipping, id: String(itemId) };
   if (!name || !price || !description) {
     return sendUserError(
       "Ya gone did goofed! Name/Price/Description are all required to create an item in the item DB.",
