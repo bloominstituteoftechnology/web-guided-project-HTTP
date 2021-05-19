@@ -24,6 +24,10 @@ function Item(props) {
     props.history.push(`/update-item/${id}`);
   }
 
+  const handleDeleteClick = ()=> {
+    console.log("clicked");
+  }
+
   //1. add in onClick handler to delete button
   //2. make axios call to delete current id
   //3. redirect to item-list
@@ -57,7 +61,7 @@ function Item(props) {
       <button onClick={handleEditClick} className="md-button">
         Edit
       </button>
-      <button className="md-button">
+      <button onClick={handleDeleteClick} className="md-button">
         Delete
       </button>
     </div>
