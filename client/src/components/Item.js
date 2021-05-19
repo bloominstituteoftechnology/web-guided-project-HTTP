@@ -20,6 +20,10 @@ function Item(props) {
     return <h2>Loading item data...</h2>;
   }
 
+  const handleEditClick = ()=> {
+    console.log('Clicked edit!!');
+  }
+
   return (
     <div className="item-wrapper">
       <div className="item-header">
