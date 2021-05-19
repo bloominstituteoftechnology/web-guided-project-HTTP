@@ -21,7 +21,7 @@ function Item(props) {
   }
 
   const handleEditClick = ()=> {
-    props.history.push('/update-item');
+    props.history.push(`/update-item/${id}`);
   }
 
   return (
