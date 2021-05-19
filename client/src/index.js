@@ -53,10 +53,15 @@ const App = () => {
         render={props => <Item {...props} setItems={setItems} />}
       />
 
-      {/* <Route path="/update-item/:id" render={(props)=> {
+
+      {/* 
+        Uses render func. Works for both class and functional components
+        <Route path="/update-item/:id" render={(props)=> {
         return(<UpdateForm {...props} setItems={setItems}/>);
       }} /> */}
 
+
+      {/* Only used for functional component */}
       <Route path="/update-item/:id">
         <UpdateForm setItems={setItems}/>
       </Route>
