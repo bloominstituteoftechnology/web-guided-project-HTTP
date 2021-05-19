@@ -15,7 +15,6 @@ const UpdateForm = props => {
   const { id } = useParams();
   const { push } = useHistory();
 
-
   useEffect(()=>{
     axios.get(`http://localhost:3333/items/${id}`)
       .then(res=>{
