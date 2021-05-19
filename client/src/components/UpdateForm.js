@@ -43,7 +43,6 @@ const UpdateForm = props => {
     console.log(item);
     axios.put(`http://localhost:3333/items/${id}`, item)
       .then(res=>{
-        console.log(res);
         props.setItems(res.data);
       })
       .catch(err=>{
