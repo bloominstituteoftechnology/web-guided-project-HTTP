@@ -61,7 +61,9 @@ const App = () => {
       }} /> */}
 
 
-      {/* Only used for functional component */}
+      {/* 
+        Only used for functional component 
+      */}
       <Route path="/update-item/:id">
         <UpdateForm setItems={setItems}/>
       </Route>

@@ -12,6 +12,9 @@ const initialItem = {
 
 const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
+  // const { id } = props.match.params;
+  // const { push } = props.history;
+  
   const { id } = useParams();
   const { push } = useHistory();
 
