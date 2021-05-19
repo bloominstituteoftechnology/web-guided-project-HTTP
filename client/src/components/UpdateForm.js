@@ -11,7 +11,6 @@ const initialItem = {
 };
 
 const UpdateForm = props => {
-  console.log(props);
   const [item, setItem] = useState(initialItem);
   const id = props.match.params.id;
 
@@ -45,7 +44,7 @@ const UpdateForm = props => {
     axios.put(`http://localhost:3333/items/${id}`, item)
       .then(res=>{
         console.log(res);
-        //setItems(res.data)
+        props.setItems(res.data);
       })
       .catch(err=>{
         console.log(err);
