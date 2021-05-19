@@ -46,7 +46,7 @@ function Item(props) {
         path="/item-list/:id/shipping"
         render={props => <ItemShipping {...props} item={item} />}
       />
-      <button className="md-button">
+      <button onClick={handleEditClick} className="md-button">
         Edit
       </button>
       <button className="md-button">
