@@ -21,7 +21,7 @@ function Item(props) {
   }
 
   const handleEditClick = ()=> {
-    console.log('Clicked edit!!');
+    props.history.push('/');
   }
 
   return (
