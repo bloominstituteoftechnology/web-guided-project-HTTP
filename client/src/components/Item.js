@@ -24,6 +24,10 @@ function Item(props) {
     props.history.push(`/update-item/${id}`);
   }
 
+  //1. add in onClick handler to delete button
+  //2. make axios call to delete current id
+  //3. redirect to item-list
+
   return (
     <div className="item-wrapper">
       <div className="item-header">
