@@ -15,7 +15,23 @@ function Item(props) {
       .then(res=>{
         setItem(res.data);
       });
-  }, []);
+  }, [] );
+  
+  const editHandler = () => {
+    props.history.push( `/update-item/${id}` );
+  };
+
+  const deleteHandler = () => {
+    axios.delete( `http://localhost:3333/items/${id}` )
+      .then( res => {
+        console.log( res );
+        props.setItems( res.data );
+        props.history.push('/item-list')
+      } )
+      .catch( err => {
+        console.error( err );
+      } );
+  };
 
   if (!item) {
     return <h2>Loading item data...</h2>;
@@ -47,10 +63,10 @@ function Item(props) {
         path="/item-list/:id/shipping"
         render={props => <ItemShipping {...props} item={item} />}
       />
-      <button className="md-button">
+      <button className="md-button" onClick={editHandler}>
         Edit
       </button>
-      <button className="md-button">
+      <button className="md-button" onClick={deleteHandler}>
         Delete
       </button>
     </div>
