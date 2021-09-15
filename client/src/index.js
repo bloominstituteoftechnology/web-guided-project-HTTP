@@ -13,16 +13,12 @@ import "./styles.css";
 const App = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    const getItems = () => {
-      axios
-        .get("http://localhost:3333/items")
-        .then(res => {
-          setItems(res.data);
-        })
-        .catch(error => console.log(error));
-    };
-
-    getItems();
+    axios
+      .get("http://localhost:3333/items")
+      .then(res => {
+        setItems(res.data);
+      })
+      .catch(error => console.log(error));
   }, []);
 
   return (
