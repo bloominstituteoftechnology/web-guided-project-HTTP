@@ -52,9 +52,10 @@ const UpdateForm = props => {
     .then (resp => {
         //7. Redirect the user to the item page.
         //8. Update local storage with our new item list
-        console.log('props: ', props);
+        // console.log('props: ', props);
         // console.log('resp: ', resp);
-        // push (`/item-list/${id}`)
+        props.setItems(resp.data)
+        push (`/item-list/${id}`)
     })
     .catch ( err => {
       console.log(err);
