@@ -14,8 +14,11 @@ const UpdateForm = props => {
   // console.log('props in UpdateForm: ', props);
   const [item, setItem] = useState(initialItem);
   console.log('useParams: ', useParams());
-  const id = 1;
+  const { id } = useParams();
+  // const {id} = props.match.params;
+  const { push } = useHistory();
 
+  //3. Get the data for the item we are editing.
   useEffect (() => {
     axios.get(`http://localhost:3333/items/${id}`)
     .then (resp => {
@@ -39,16 +42,24 @@ const UpdateForm = props => {
       [ev.target.name]: value
     });
   };
-
-  //3. Get the data for the item we are editing.
-  //4. User changes the data.
-  //5. Clicking the update button.
-  //6. Put request to update the data.
-  //7. Redirect the user to the item page.
-  //8. Update local storage with our new item list
-
+  
   const handleSubmit = e => {
+    //4. User changes the data.
+    //5. Clicking the update button.
     e.preventDefault();
+    //6. Put request to update the data.
+    axios.put(`http://localhost:3333/items/${id}`, item)
+    .then (resp => {
+        //7. Redirect the user to the item page.
+        //8. Update local storage with our new item list
+        console.log('props: ', props);
+        // console.log('resp: ', resp);
+        // push (`/item-list/${id}`)
+    })
+    .catch ( err => {
+      console.log(err);
+    });
+
   };
 
   return (

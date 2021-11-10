@@ -25,7 +25,7 @@ function Item(props) {
   const handelEdit = () => {
     //1. Capture a click of the edit button.
     //2. redirect the user to the edit form.
-    push('/item-update');
+    push(`/item-update/${id}`);
     
   }
 
