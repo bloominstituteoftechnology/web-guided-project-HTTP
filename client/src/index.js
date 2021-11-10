@@ -12,6 +12,7 @@ import "./styles.css";
 
 const App = () => {
   const [items, setItems] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:3333/items")
@@ -47,7 +48,12 @@ const App = () => {
         render={props => <Item {...props} setItems={setItems} />}
       />
       <Route path="/item-form" component={ItemForm} />
-      {/* <Route path="/item-update/:id" component={UpdateForm} /> */}
+      {/* Class Component */}
+      {/* <Route path="/item-update/:id" 
+        render={ props=> <UpdateForm {...props} setItems={setItems}/> }
+      /> */}
+      {/* <Route path="/item-update/:id" component={UpdateForm} /> */ }
+
       {/* Functional Component */}
       <Route path="/item-update/:id">
         <UpdateForm setItems={setItems}/>
