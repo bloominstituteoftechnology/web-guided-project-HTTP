@@ -26,12 +26,7 @@ function Item(props) {
     //1. Capture a click of the edit button.
     //2. redirect the user to the edit form.
     push('/item-update');
-    //3. Get the data for the item we are editing.
-    //4. User changes the data.
-    //5. Clicking the update button.
-    //6. Put request to update the data.
-    //7. Redirect the user to the item page.
-    //8. Update local storage with our new item list
+    
   }
 
   return (

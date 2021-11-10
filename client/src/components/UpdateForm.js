@@ -26,6 +26,13 @@ const UpdateForm = props => {
     });
   };
 
+  //3. Get the data for the item we are editing.
+  //4. User changes the data.
+  //5. Clicking the update button.
+  //6. Put request to update the data.
+  //7. Redirect the user to the item page.
+  //8. Update local storage with our new item list
+
   const handleSubmit = e => {
     e.preventDefault();
   };
