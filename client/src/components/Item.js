@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, } from 'react-router-dom';
 import axios from 'axios';
 
 import ItemDescription from './ItemDescription';
@@ -18,6 +18,17 @@ function Item(props) {
 
   if (!item) {
     return <h2>Loading item data...</h2>;
+  }
+
+  const handleEdit = () => {
+    //1. Capture a click of the edit button.
+    //2. Redirect the user to the edit form.
+    //3. Get the data for the item we are editing.
+    //4. User changes the data.
+    //5. Clicking the update button.
+    //6. Put request to update the data.
+    //7. Redirect the user to the item page.
+    //8. Update local storage with our new item list
   }
 
   return (
@@ -46,7 +57,7 @@ function Item(props) {
         path="/item-list/:id/shipping"
         render={props => <ItemShipping {...props} item={item} />}
       />
-      <button className="md-button">
+      <button onClick = {handelEdit} className="md-button">
         Edit
       </button>
       <button className="md-button">
