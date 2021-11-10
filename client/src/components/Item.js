@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, NavLink, } from 'react-router-dom';
+import { Route, NavLink, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import ItemDescription from './ItemDescription';
@@ -8,6 +8,8 @@ import ItemShipping from './ItemShipping';
 function Item(props) {
   const [item, setItem] = useState({});
   const { id } = props.match.params;
+
+  // const { push } = useHistory();
 
   useEffect(()=>{
     axios.get(`http://localhost:3333/items/${id}`)
@@ -23,6 +25,7 @@ function Item(props) {
   const handleEdit = () => {
     //1. Capture a click of the edit button.
     //2. Redirect the user to the edit form.
+    useHistory().push('/')
     //3. Get the data for the item we are editing.
     //4. User changes the data.
     //5. Clicking the update button.
