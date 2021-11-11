@@ -34,6 +34,17 @@ function Item(props) {
   //2. Send our axios call to delete current item (id)
   //3. Redirect user to item list page.
   //4. Update local state
+  const handelDelete = () => {
+    axios.delete(`http://localhost:3333/items/${id}`)
+    .then (resp => {
+      // console.log('resp: ', resp);
+      props.setItems(resp.data);
+      push("/item-list/");
+    })
+    .catch (err => {
+      console.log(err);
+    })
+  }
 
   return (
     <div className="item-wrapper">
@@ -64,7 +75,7 @@ function Item(props) {
       <button onClick = {handelEdit} className="md-button">
         Edit
       </button>
-      <button className="md-button">
+      <button onClick = {handelDelete} className="md-button">
         Delete
       </button>
     </div>
