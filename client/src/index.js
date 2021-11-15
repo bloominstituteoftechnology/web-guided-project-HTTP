@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className="App">
       <nav>
-        <h1 className="store-header">Dustin's Trinkets</h1>
+        <h1 className="store-header">BloomTech's Trinkets</h1>
         <div className="nav-links">
           <NavLink exact to="/item-form">
             Add Item
