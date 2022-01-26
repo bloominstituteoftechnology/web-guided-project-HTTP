@@ -21,8 +21,7 @@ export const deleteItems = (id) => (dispatch) => {
 }
 
 export const updateItems = (id, item) => (dispatch) => {
-    return axios
-        .put(`http://localhost:3333/items/${id}`, item)
+    return axios.put(`http://localhost:3333/items/${id}`, item)
         .then(res=>{
             dispatch(setItems(res.data));
         })
