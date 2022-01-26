@@ -5,7 +5,7 @@ import axios from "axios";
 
 import { connect } from 'react-redux';
 
-import { setItems } from './actions';
+import { getItems } from './actions';
 
 import Home from "./components/Home";
 import ItemsList from "./components/ItemsList";
@@ -15,55 +15,33 @@ import UpdateForm from "./components/UpdateForm";
 import "./styles.css";
 
 const App = (props) => {
-    const { items, setItems } = props;
+    const { getItems } = props;
 
-    useEffect(() => {
-        const getItems = () => {
-        axios
-            .get("http://localhost:3333/items")
-            .then(res => {
-                setItems(res.data);
-            })
-            .catch(error => console.log(error));
-        };
+    useEffect(() => getItems(), []);
 
-        getItems();
-    }, []);
+    return (
+        <div className="App">
+        <nav>
+            <h1 className="store-header">BloomTech Trinkets</h1>
+            <div className="nav-links">
+            <NavLink exact to="/item-form">
+                Add Item
+            </NavLink>
+            <NavLink exact to="/">
+                Home
+            </NavLink>
+            <NavLink to="/item-list">Shop</NavLink>
+            </div>
+        </nav>
 
-  return (
-    <div className="App">
-      <nav>
-        <h1 className="store-header">BloomTech Trinkets</h1>
-        <div className="nav-links">
-          <NavLink exact to="/item-form">
-            Add Item
-          </NavLink>
-          <NavLink exact to="/">
-            Home
-          </NavLink>
-          <NavLink to="/item-list">Shop</NavLink>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/item-list" component={ItemsList} />
+        <Route exact path="/item-list/:id" component={Item}/>
+        <Route path="/update-item/:id" component={UpdateForm}/>
+        <Route path="/item-form" component={ItemForm} />
+
         </div>
-      </nav>
-
-      <Route exact path="/" component={Home} />
-      <Route
-        exact
-        path="/item-list"
-        render={props => <ItemsList {...props} items={items} />}
-      />
-
-      <Route
-        path="/item-list/:id"
-        render={props => <Item {...props} setItems={setItems} />}
-      />
-      
-      <Route path="/update-item/:id">
-        <UpdateForm setItems={setItems}/>
-      </Route>
-
-      <Route path="/item-form" component={ItemForm} />
-    </div>
-  );
+    );
 };
 
 const mapStateToProps = (state)=> {
@@ -72,4 +50,4 @@ const mapStateToProps = (state)=> {
     })
 }
 
-export default connect(mapStateToProps, { setItems })(App);
+export default connect(mapStateToProps, { getItems })(App);

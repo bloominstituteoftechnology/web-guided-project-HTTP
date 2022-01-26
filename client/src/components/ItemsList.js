@@ -1,14 +1,20 @@
 import React from "react";
+import { useHistory } from 'react-router-dom';
+
+import { connect } from 'react-redux';
 
 function ItemsList(props) {
+  const { items } = props;
+  const { push } = useHistory();
+
   function handleClick(ev, item) {
     ev.preventDefault();
-    props.history.push(`/item-list/${item.id}`);
+    push(`/item-list/${item.id}`);
   }
   
   return (
     <div className="items-list-wrapper">
-      {props.items.map(item => (
+      {items.map(item => (
         <div
           onClick={ev => handleClick(ev, item)}
           className="item-card"
@@ -27,4 +33,10 @@ function ItemsList(props) {
   );
 }
 
-export default ItemsList;
+const mapStateToProps = (state)=> {
+  return({
+    items: state.items
+  });
+}
+
+export default connect(mapStateToProps)(ItemsList);

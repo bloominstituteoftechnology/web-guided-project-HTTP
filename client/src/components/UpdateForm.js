@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router} from "react-router-dom";
+import { connect } from 'react-redux';
+
+import { updateItems } from './../actions';
+
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -12,9 +15,9 @@ const initialItem = {
 };
 
 const UpdateForm = props => {
+  const { updateItems } = props;
+
   const [item, setItem] = useState(initialItem);
-  // const { id } = props.match.params;
-  // const { push } = props.history;
   
   const { id } = useParams();
   const { push } = useHistory();
@@ -26,7 +29,7 @@ const UpdateForm = props => {
       })
       .catch(err=>{
         console.log(err);
-      })
+      });
   }, []);
 
 
@@ -45,15 +48,10 @@ const UpdateForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(item);
-    axios.put(`http://localhost:3333/items/${id}`, item)
-      .then(res=>{
-        props.setItems(res.data);
+    updateItems(id, item)
+      .then(()=> {
         push(`/item-list/${id}`);
-      })
-      .catch(err=>{
-        console.log(err);
-      })
+      });
   };
 
   return (
@@ -111,4 +109,4 @@ const UpdateForm = props => {
   );
 };
 
-export default UpdateForm;
+export default connect(null, { updateItems })(UpdateForm);

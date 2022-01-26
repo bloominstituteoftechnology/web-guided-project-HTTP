@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import { Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
+
+import { connect } from 'react-redux';
+
+import { deleteItems } from './../actions';
 
 import ItemDescription from './ItemDescription';
 import ItemShipping from './ItemShipping';
 
 function Item(props) {
+  const { deleteItems } = props;
+
   const [item, setItem] = useState({});
-  const { id } = props.match.params;
+  const { id } = useParams();
 
   useEffect(()=>{
     axios.get(`http://localhost:3333/items/${id}`)
@@ -25,19 +33,11 @@ function Item(props) {
   }
 
   const handleDeleteClick = ()=> {
-    axios.delete(`http://localhost:3333/items/${id}`)
-      .then(res=> {
-        props.setItems(res.data);
+    deleteItems(id)
+      .then(()=> {
         props.history.push('/item-list');
-      })
-      .catch(err=>{
-        console.log(err);
-      })
+      });
   }
-
-  //1. add in onClick handler to delete button
-  //2. make axios call to delete current id
-  //3. redirect to item-list
 
   return (
     <div className="item-wrapper">
@@ -75,4 +75,4 @@ function Item(props) {
   );
 }
 
-export default Item;
+export default connect(null, { deleteItems })(Item);
