@@ -35,18 +35,19 @@ const App = () => {
           <NavLink to="/item-list">Shop</NavLink>
         </div>
       </nav>
-
-      <Route exact path="/" component={Home} />
-      <Route
-        exact
-        path="/item-list"
-        render={props => <ItemsList {...props} items={items} />}
-      />
-      <Route
-        path="/item-list/:id"
-        render={props => <Item {...props} setItems={setItems} />}
-      />
-      <Route path="/item-form" component={ItemForm} />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/item-list"
+          render={props => <ItemsList {...props} items={items} />}
+        />
+        <Route
+          path="/item-list/:id"
+          render={props => <Item {...props} setItems={setItems} />}
+        />
+        <Route path="/item-form" component={ItemForm} />
+      </Switch>
     </div>
   );
 };
