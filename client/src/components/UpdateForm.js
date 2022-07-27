@@ -13,10 +13,11 @@ const initialItem = {
 const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
   
-  // console.log("props in update item", props)
+  console.log("props in update item", props)
   // console.log("useParams in update item", useParams())
 
-  const { id } = useParams();
+  const { id } = useParams(); //instead of props.match.params
+  const { push } = useHistory(); //instead of props.history.push
 
 //IDea to get our ID ?
   useEffect(() => {
@@ -46,7 +47,7 @@ const UpdateForm = props => {
           .then(res => {
             console.log("response from PUT", res)
             props.setItems(res.data);
-            
+            push(`/item-list/${item.id}`);
           })
   };
 
