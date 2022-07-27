@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import ItemDescription from './ItemDescription';
@@ -8,6 +8,7 @@ import ItemShipping from './ItemShipping';
 function Item(props) {
   const [item, setItem] = useState({});
   const { id } = props.match.params;
+  console.log(useParams())
 
   useEffect(()=>{
     axios.get(`http://localhost:3333/items/${id}`)
@@ -22,6 +23,22 @@ function Item(props) {
 
   const handleEditButton = () => {
     props.history.push(`/item-update/${item.id}`)
+  }
+
+  //add onclick handler
+  //add an axios call to delete the item with the relevant item id
+  //reflect new change in client - update our state with our returned values
+  //redirect to item list
+
+  const handleDeleteButton = (e) => {
+    e.preventDefault()
+    axios.delete(`http://localhost:3333/items/${item.id}`)
+        .then(res => {
+          console.log(res)
+          props.setItems(res.data);
+          props.history.push('/item-list')
+        })
+        .catch(err => console.log(err))
   }
 
   return (
@@ -53,7 +70,7 @@ function Item(props) {
       <button onClick={handleEditButton} className="md-button">
         Edit
       </button>
-      <button className="md-button">
+      <button onClick={handleDeleteButton} className="md-button">
         Delete
       </button>
     </div>
