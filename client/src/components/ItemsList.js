@@ -2,6 +2,7 @@ import React from "react";
 
 function ItemsList(props) {
   function handleClick(ev, item) {
+    console.log("i clicked an item!", item)
     ev.preventDefault();
     props.history.push(`/item-list/${item.id}`);
   }

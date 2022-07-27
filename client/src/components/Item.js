@@ -20,6 +20,10 @@ function Item(props) {
     return <h2>Loading item data...</h2>;
   }
 
+  const handleEditButton = () => {
+    props.history.push(`/item-update/${item.id}`)
+  }
+
   return (
     <div className="item-wrapper">
       <div className="item-header">
@@ -46,7 +50,7 @@ function Item(props) {
         path="/item-list/:id/shipping"
         render={props => <ItemShipping {...props} item={item} />}
       />
-      <button className="md-button">
+      <button onClick={handleEditButton} className="md-button">
         Edit
       </button>
       <button className="md-button">
